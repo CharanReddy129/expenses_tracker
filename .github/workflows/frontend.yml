@@ -1,4 +1,4 @@
-name: frontend Image build and push
+name: frontend
 on:
     # push:
     #     branches:

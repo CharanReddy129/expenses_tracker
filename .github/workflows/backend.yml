@@ -1,4 +1,4 @@
-name: Backend Image build and push
+name: Backend
 on:
     # push:
     #     branches:
@@ -7,6 +7,10 @@ on:
     #         - backend/**
     #         - .github/workflows/backend.yml
     workflow_dispatch:
+    workflow_run:
+        workflows: ["frontend"]
+        types:
+            - completed
 jobs:
     build:
         runs-on: ubuntu-latest

@@ -25,6 +25,11 @@ jobs:
               uses: actions/download-artifact@v4
               with:
                 name: image_tag
+                path: .
+
+            - name: list files
+              run: |
+                  ls -la
 
             - name: Read tag from file
               id: read

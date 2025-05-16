@@ -1,11 +1,12 @@
 name: image-build-push
 on:
-    # push:
-    #     branches:
-    #     - main
-    #     paths:
-    #         - frontend/**
-    #         - .github/workflows/frontend.yml
+    push:
+        branches:
+        - main
+        paths:
+            - frontend/**
+            - backend/**
+            - .github/workflows/Image-build-push.yml
     workflow_dispatch:
 
 jobs:

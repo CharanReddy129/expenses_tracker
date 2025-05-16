@@ -2,7 +2,7 @@ name: Deployment
 on:
     workflow_dispatch:
     workflow_run:
-        workflows: ["Backend", "frontend"]
+        workflows: ["image-build-push"]
         types:
             - completed
 
@@ -21,8 +21,17 @@ jobs:
               with:
                   username: ${{ secrets.DOCKER_USERNAME }}
                   password: ${{ secrets.DOCKER_PASSWORD }}
+            - name: image tag
+              uses: actions/download-artifact@v4
+              with:
+                name: image-tag
 
+            - name: Read tag from file
+              id: read
+              run: |
+                  IMAGE_TAG=$(cat image-tag)
+                  echo "image_tag=$IMAGE_TAG" >> $GITHUB_OUTPUT
             - name: Deploy to Docker Hub
               run: |
-                  docker pull ${{ secrets.DOCKER_USERNAME }}/expense-tracker-backend:2
-                  docker pull ${{ secrets.DOCKER_USERNAME }}/expense-tracker-frontend:5
+                  docker pull ${{ secrets.DOCKER_USERNAME }}/expense-tracker-backend:${{ steps.read.outputs.image_tag }}
+                  docker pull ${{ secrets.DOCKER_USERNAME }}/expense-tracker-frontend:${{ steps.read.outputs.image_tag }}

@@ -1,11 +1,11 @@
 name: frontend Image build and push
 on:
-    push:
-        branches:
-        - main
-        paths:
-            - frontend/**
-            - .github/workflows/frontend.yml
+    # push:
+    #     branches:
+    #     - main
+    #     paths:
+    #         - frontend/**
+    #         - .github/workflows/frontend.yml
     workflow_dispatch:
 
 jobs:
@@ -25,9 +25,11 @@ jobs:
                   password: ${{ secrets.DOCKER_PASSWORD }}
 
             - name: Build and push frontend image
+              env:
+                IMAGE_NAME: "expense-tracker-frontend"
               uses: docker/build-push-action@v6
               with:
                   context: frontend/
                   file: frontend/Dockerfile
                   push: true
-                  tags: ${{ secrets.DOCKER_USERNAME }}/frontend:${{ github.run_number }}
+                  tags: ${{ secrets.DOCKER_USERNAME }}/{{ env.IMAGE_NAME }}:${{ github.run_number }}

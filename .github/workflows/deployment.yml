@@ -31,12 +31,13 @@ jobs:
               run: |
                   ls -la
 
-            # - name: Read tag from file
-            #   id: read
-            #   run: |
-            #       IMAGE_TAG=$(cat image_tag.txt)
-            #       echo "image_tag=$IMAGE_TAG" >> $GITHUB_OUTPUT
-            # - name: Deploy to Docker Hub
-            #   run: |
-            #       docker pull ${{ secrets.DOCKER_USERNAME }}/expense-tracker-backend:${{ steps.read.outputs.image_tag }}
-            #       docker pull ${{ secrets.DOCKER_USERNAME }}/expense-tracker-frontend:${{ steps.read.outputs.image_tag }}
+            - name: Read tag from file
+              id: read
+              run: |
+                  IMAGE_TAG=$(cat image_tag.txt)
+                  echo "image_tag=$IMAGE_TAG" >> $GITHUB_OUTPUT
+            - name: Deploy to Docker Hub
+              run: |
+                  docker pull ${{ secrets.DOCKER_USERNAME }}/expense-tracker-backend:${{ steps.read.outputs.image_tag }}
+                  docker pull ${{ secrets.DOCKER_USERNAME }}/expense-tracker-frontend:${{ steps.read.outputs.image_tag }}
+                  docker images

@@ -4,11 +4,9 @@ A full-stack MERN application for tracking expenses with analytics and user auth
 
 ## Features
 
-- User Authentication (Register/Login)
 - Expense Management (Add, Edit, Delete)
 - Expense Categorization
 - Analytics Dashboard with Charts
-- Profile Management
 - Responsive Design
 
 ## Tech Stack
@@ -71,11 +69,6 @@ The application will be available at `http://localhost:3000`
 
 ## API Endpoints
 
-### Authentication
-- POST /api/auth/register - Register a new user
-- POST /api/auth/login - Login user
-- GET /api/auth/me - Get current user
-
 ### Expenses
 - GET /api/expenses - Get all expenses
 - POST /api/expenses - Create new expense
@@ -83,9 +76,6 @@ The application will be available at `http://localhost:3000`
 - DELETE /api/expenses/:id - Delete expense
 - GET /api/expenses/summary - Get expense summary
 
-### Users
-- PATCH /api/users/profile - Update user profile
-- DELETE /api/users/profile - Delete user account
 
 ## Contributing
 

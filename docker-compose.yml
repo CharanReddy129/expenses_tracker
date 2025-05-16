@@ -1,17 +1,19 @@
 services:
   frontend:
-    build:
-      context: ./frontend
-      dockerfile: Dockerfile
+    image: charanreddy12/expense-tracker-frontend:latest
+    # build:
+    #   context: ./frontend
+    #   dockerfile: Dockerfile
     ports:
       - "3000:3000"
     depends_on:
       - backend
 
   backend:
-    build:
-      context: ./backend
-      dockerfile: Dockerfile
+    image: charanreddy12/expense-tracker-backend:latest
+    # build:
+    #   context: ./backend
+    #   dockerfile: Dockerfile
     ports:
       - "5000:5000"
     depends_on:

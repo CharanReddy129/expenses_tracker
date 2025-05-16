@@ -3,13 +3,8 @@ on:
     push:
         branches:
         - main
-    ignore_paths:
-        - backend/**
-        - .gitignore
-        - .git/**
-        - .dockerignore
-        - docker-compose.yml
-        - README.md
+        paths:
+            - frontend/**
 
 jobs:
     build:

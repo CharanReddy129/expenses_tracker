@@ -24,7 +24,7 @@ jobs:
             - name: image tag
               uses: actions/download-artifact@v4
               with:
-                name: image-tag
+                name: image_tag
 
             - name: Read tag from file
               id: read
